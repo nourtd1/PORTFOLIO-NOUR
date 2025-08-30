@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%; /* Light Gray */
+    --foreground: 222 84% 4.9%; /* Near Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 4.9%;
+
+    --primary: 220 29% 15%; /* Deep Blue / Nuit */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 29% 29%; /* Old primary, now accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 84% 4.9%; /* Near Black */
+    --foreground: 210 40% 98%; /* Almost White */
+
+    --card: 222 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%; /* Almost White */
+    --primary-foreground: 222 84% 4.9%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 210 29% 29%; /* Accent */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 210 29% 29%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+}
+
+/* Performance optimizations for modern designs */
+
+/* Optimized backdrop-blur with will-change for better performance */
+.backdrop-blur-optimized {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  will-change: backdrop-filter;
+  transform: translateZ(0); /* Force hardware acceleration */
+}
+
+/* Optimized gradient backgrounds with reduced complexity */
+.gradient-bg-optimized {
+  background: linear-gradient(135deg, hsl(var(--primary) / 0.05) 0%, hsl(var(--accent) / 0.05) 100%);
+  background-attachment: fixed; /* Prevents repaints on scroll */
+}
+
+/* Optimized card shadows with transform3d for hardware acceleration */
+.card-shadow-optimized {
+  box-shadow: 0 4px 6px -1px hsl(var(--foreground) / 0.1), 0 2px 4px -1px hsl(var(--foreground) / 0.06);
+  transform: translate3d(0, 0, 0); /* Force hardware acceleration */
+  will-change: transform, box-shadow;
+}
+
+/* Optimized hover effects with transform instead of margin/padding changes */
+.hover-lift-optimized {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift-optimized:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: 0 20px 25px -5px hsl(var(--foreground) / 0.1), 
+              0 10px 10px -5px hsl(var(--foreground) / 0.04);
+}
+
+/* Optimized text gradients with better performance */
+.text-gradient-optimized {
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  will-change: background;
+}
+
+/* Optimized image hover effects */
+.image-hover-optimized {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.image-hover-optimized:hover {
+  transform: scale(1.05);
+}
+
+/* Optimized badge animations */
+.badge-hover-optimized {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background-color;
+}
+
+.badge-hover-optimized:hover {
+  transform: translateY(-1px);
+}
+
+/* Optimized button hover effects */
+.button-hover-optimized {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, background-color, box-shadow;
+}
+
+.button-hover-optimized:hover {
+  transform: translateY(-1px);
+}
+
+/* Optimized grid layouts with better performance */
+.grid-optimized {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  contain: layout style paint; /* CSS containment for better performance */
+}
+
+/* Optimized flex layouts */
+.flex-optimized {
+  display: flex;
+  contain: layout style paint;
+}
+
+/* Optimized text rendering */
+.text-optimized {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimized scroll behavior */
+.smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+/* Optimized focus states for accessibility */
+.focus-optimized:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Optimized loading states */
+.loading-optimized {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Optimized responsive images */
+.responsive-image-optimized {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* Optimized container queries support */
+.container-optimized {
+  container-type: inline-size;
+}
+
+/* Optimized dark mode transitions */
+.dark-mode-optimized {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Prevent layout shifts */
+.prevent-layout-shift {
+  contain: layout style paint;
+}
+
+/* Optimized animations with reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .hover-lift-optimized,
+  .image-hover-optimized,
+  .badge-hover-optimized,
+  .button-hover-optimized {
+    transition: none;
+  }
+  
+  .hover-lift-optimized:hover,
+  .image-hover-optimized:hover,
+  .badge-hover-optimized:hover,
+  .button-hover-optimized:hover {
+    transform: none;
+  }
+}
+
+/* Simple marquee animation for skills section */
+@keyframes skillsMarqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.skills-marquee {
+  width: max-content;
+  animation: skillsMarqueeScroll 30s linear infinite;
+}
+
+/* Prevent horizontal overflow jumps */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Optimized print styles */
+@media print {
+  .backdrop-blur-optimized,
+  .gradient-bg-optimized,
+  .card-shadow-optimized {
+    backdrop-filter: none;
+    background: white !important;
+    box-shadow: none !important;
+  }
+  
+  .text-gradient-optimized {
+    background: none !important;
+    color: black !important;
+  }
+}
