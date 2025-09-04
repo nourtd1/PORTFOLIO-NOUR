@@ -15,7 +15,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "@/app/actions";
 import { Loader2, Send, CheckCircle, User, Mail, MessageSquare } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
@@ -43,25 +42,35 @@ export function ContactForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      const result = await submitContactForm(values);
-      if (result.success) {
+      // Submit to Formspree
+      const response = await fetch("https://formspree.io/f/xldwonbz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name,
+          email: values.email,
+          message: values.message,
+        }),
+      });
+
+      if (response.ok) {
         setIsSuccess(true);
         toast({
           title: "Message envoyé !",
-          description: result.message,
+          description: "Votre message a été envoyé avec succès !",
         });
         form.reset();
         // Reset success state after 3 seconds
         setTimeout(() => setIsSuccess(false), 3000);
       } else {
-         toast({
+        toast({
           title: "Erreur",
           description: "Une erreur est survenue. Veuillez réessayer.",
           variant: "destructive"
         });
       }
     } catch (error) {
-       toast({
+      toast({
         title: "Erreur",
         description: "Une erreur est survenue. Veuillez réessayer.",
         variant: "destructive"
@@ -111,7 +120,12 @@ export function ContactForm() {
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <form 
+            onSubmit={form.handleSubmit(onSubmit)} 
+            action="https://formspree.io/f/xldwonbz" 
+            method="POST"
+            className="space-y-6"
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormField
                 control={form.control}
@@ -125,7 +139,8 @@ export function ContactForm() {
                     <FormControl>
                       <Input 
                         placeholder="Votre nom" 
-                        {...field} 
+                        {...field}
+                        required
                         className="focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                       />
                     </FormControl>
@@ -146,7 +161,9 @@ export function ContactForm() {
                     <FormControl>
                       <Input 
                         placeholder="votre@email.com" 
-                        {...field} 
+                        {...field}
+                        type="email"
+                        required
                         className="focus:ring-2 focus:ring-primary/20 transition-all duration-200"
                       />
                     </FormControl>
@@ -170,6 +187,7 @@ export function ContactForm() {
                       placeholder="Décrivez votre projet ou votre demande..."
                       className="min-h-[150px] focus:ring-2 focus:ring-primary/20 transition-all duration-200 resize-none"
                       {...field}
+                      required
                     />
                   </FormControl>
                   <div className="flex items-center justify-between">

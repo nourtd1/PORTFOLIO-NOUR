@@ -78,6 +78,24 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                 <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
             </div>
+            <script
+              type="application/ld+json"
+              // eslint-disable-next-line react/no-danger
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "Article",
+                  headline: post.title,
+                  datePublished: new Date(post.date).toISOString(),
+                  articleSection: post.tags?.[0] || "",
+                  author: {
+                    "@type": "Person",
+                    name: "Nour",
+                  },
+                  image: post.imageUrl ? [post.imageUrl] : undefined,
+                }),
+              }}
+            />
           </header>
 
           {post.imageUrl && (
@@ -86,6 +104,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
                     src={post.imageUrl}
                     alt={`Image de l'article ${post.title}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 800px"
                     className="object-cover"
                     priority
                     data-ai-hint={post.imageHint}

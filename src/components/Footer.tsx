@@ -6,7 +6,7 @@ import { socialLinks } from "@/lib/data";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Separator } from "./ui/separator";
-import { Code2, Github, Linkedin, Mail, MapPin, Send, Palette } from "lucide-react";
+import { Code2, Github, Linkedin, Mail, MapPin, Send, Palette, FileText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 export function Footer() {
@@ -33,6 +33,7 @@ export function Footer() {
   const navLinks = [
     { href: "/", label: "Accueil" },
     { href: "/projets", label: "Projets" },
+    { href: "/services", label: "Services" },
     { href: "/blog", label: "Blog" },
     { href: "/a-propos", label: "À propos" },
     { href: "/contact", label: "Contact" },
@@ -70,11 +71,13 @@ export function Footer() {
                   <Linkedin className="h-4 w-4" />
                 </Button>
               </Link>
-              <Link href={socialLinks.behance} target="_blank" aria-label="Behance" className="inline-flex">
-                <Button variant="outline" size="icon" className="rounded-full">
-                  <Palette className="h-4 w-4" />
-                </Button>
-              </Link>
+              {socialLinks.youtube && (
+                <Link href={socialLinks.youtube} target="_blank" aria-label="YouTube" className="inline-flex">
+                  <Button variant="outline" size="icon" className="rounded-full">
+                    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden="true"><path fill="currentColor" d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.7 2.5 12 2.5 12 2.5h0s-4.7 0-8.2.4c-.5.1-1.5.1-2.4 1C.7 4.6.5 6.2.5 6.2S.3 8.1.3 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 1.9.2 8 .4 8 .4s4.7 0 8.2-.4c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8ZM9.8 13.9V7.9l6.4 3-6.4 3Z"/></svg>
+                  </Button>
+                </Link>
+              )}
             </div>
           </div>
 
@@ -166,7 +169,12 @@ export function Footer() {
               <span>Rwanda • Gisenyi</span>
             </div>
             <Link href="/confidentialite" className="hover:text-foreground transition-colors">Confidentialité</Link>
-            <Link href="/mentions-legales" className="hover:text-foreground transition-colors">Mentions légales</Link>
+            <Link href="/mentions-legales" className="transition-colors">
+              <span className="inline-flex items-center gap-2 rounded-full border px-3 py-1 hover:bg-accent hover:text-accent-foreground">
+                <FileText className="w-3.5 h-3.5" />
+                Mentions légales
+              </span>
+            </Link>
             </div>
         </div>
       </div>

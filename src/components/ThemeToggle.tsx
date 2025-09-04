@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Moon, Sun, Monitor } from "lucide-react"
 import { useTheme } from "next-themes"
+import { motion } from "framer-motion"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -18,48 +19,89 @@ export function ThemeToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button 
-          variant="ghost" 
-          size="icon"
-          className="relative w-9 h-9 rounded-lg hover:bg-muted/50 transition-colors duration-200"
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Changer le thème</span>
-        </Button>
+          <Button 
+            variant="ghost" 
+            size="icon"
+            className="relative w-10 h-10 rounded-xl hover:bg-muted/50 transition-all duration-300 group"
+          >
+            <motion.div
+              className="relative w-5 h-5"
+              animate={{ rotate: theme === 'dark' ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0 text-amber-500" />
+              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100 text-blue-500 top-0 left-0" />
+            </motion.div>
+            <span className="sr-only">Changer le thème</span>
+          </Button>
+        </motion.div>
       </DropdownMenuTrigger>
       <DropdownMenuContent 
         align="end" 
-        className="w-40 bg-background/95 backdrop-blur-md border shadow-lg"
+        className="w-48 bg-background/95 backdrop-blur-xl border border-border/50 shadow-xl rounded-xl p-2"
       >
         <DropdownMenuItem 
           onClick={() => setTheme("light")}
-          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-colors"
+          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-all duration-200 rounded-lg p-3 group"
         >
-          <Sun className="h-4 w-4" />
-          <span>Clair</span>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Sun className="h-4 w-4 text-amber-500" />
+          </motion.div>
+          <span className="font-medium">Mode Clair</span>
           {theme === 'light' && (
-            <div className="ml-auto w-2 h-2 bg-primary rounded-full" />
+            <motion.div 
+              className="ml-auto w-2 h-2 bg-primary rounded-full"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+            />
           )}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setTheme("dark")}
-          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-colors"
+          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-all duration-200 rounded-lg p-3 group"
         >
-          <Moon className="h-4 w-4" />
-          <span>Sombre</span>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Moon className="h-4 w-4 text-blue-500" />
+          </motion.div>
+          <span className="font-medium">Mode Sombre</span>
           {theme === 'dark' && (
-            <div className="ml-auto w-2 h-2 bg-primary rounded-full" />
+            <motion.div 
+              className="ml-auto w-2 h-2 bg-primary rounded-full"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+            />
           )}
         </DropdownMenuItem>
         <DropdownMenuItem 
           onClick={() => setTheme("system")}
-          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-colors"
+          className="flex items-center gap-3 cursor-pointer hover:bg-muted/50 transition-all duration-200 rounded-lg p-3 group"
         >
-          <Monitor className="h-4 w-4" />
-          <span>Système</span>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Monitor className="h-4 w-4 text-purple-500" />
+          </motion.div>
+          <span className="font-medium">Système</span>
           {theme === 'system' && (
-            <div className="ml-auto w-2 h-2 bg-primary rounded-full" />
+            <motion.div 
+              className="ml-auto w-2 h-2 bg-primary rounded-full"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 0.2 }}
+            />
           )}
         </DropdownMenuItem>
       </DropdownMenuContent>

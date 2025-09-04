@@ -73,13 +73,32 @@ export default function ProjectDetailsPage({ params }: { params: { slug: string 
               <Badge key={tech} variant="secondary">{tech}</Badge>
             ))}
           </div>
+          <script
+            type="application/ld+json"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "CreativeWork",
+                name: project.title,
+                description: project.metaDescription || project.shortDescription,
+                url: `/projets/${project.slug}`,
+                author: {
+                  "@type": "Person",
+                  name: "Nour",
+                },
+                image: [project.imageUrl],
+              }),
+            }}
+          />
         </header>
 
         <div className="relative aspect-[16/8] w-full max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg mb-16">
           <Image
-            src={project.imageUrl.replace('600x400', '1200x600')}
+            src={project.imageUrl}
             alt={`Image principale du projet ${project.title}`}
             fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
             className="object-cover"
             priority
             data-ai-hint={project.imageHint}

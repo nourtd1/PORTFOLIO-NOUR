@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import { Toaster } from "@/components/ui/toaster";
+import dynamic from 'next/dynamic';
+const Header = dynamic(() => import('@/components/Header').then(m => m.Header), { loading: () => null });
+const Footer = dynamic(() => import('@/components/Footer').then(m => m.Footer), { loading: () => null });
+const Toaster = dynamic(() => import('@/components/ui/toaster').then(m => m.Toaster), { loading: () => null });
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { PT_Sans, Playfair_Display } from 'next/font/google'
 import { cn } from '@/lib/utils';
