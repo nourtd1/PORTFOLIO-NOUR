@@ -116,19 +116,11 @@ const StatsSection = () => {
                 {/* Valeur avec animation de comptage */}
                 <motion.div
                   className="text-3xl font-bold text-center mb-2 bg-gradient-to-r from-slate-800 to-slate-600 dark:from-white dark:to-slate-300 bg-clip-text text-transparent"
-                  initial={{ opacity: 0 }}
-                  animate={isInView ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.5 + index * 0.1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5, ease: easeOut }}
                 >
-                  {isInView && (
-                    <motion.span
-                      initial={{ number: 0 }}
-                      animate={{ number: stat.value }}
-                      transition={{ duration: 2, delay: 0.5 + index * 0.1, ease: easeOut }}
-                    >
-                      {Math.round(stat.value)}
-                    </motion.span>
-                  )}
+                  {stat.value}
                   {stat.suffix}
                 </motion.div>
 
