@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut } from "framer-motion";
 import { useRef } from "react";
 import { Code, Smartphone, Cloud, Users, Award, Clock } from "lucide-react";
 
@@ -72,7 +72,7 @@ const StatsSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -124,7 +124,7 @@ const StatsSection = () => {
                     <motion.span
                       initial={{ number: 0 }}
                       animate={{ number: stat.value }}
-                      transition={{ duration: 2, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                      transition={{ duration: 2, delay: 0.5 + index * 0.1, ease: easeOut }}
                     >
                       {Math.round(stat.value)}
                     </motion.span>

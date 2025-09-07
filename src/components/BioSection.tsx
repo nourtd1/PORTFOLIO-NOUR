@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut } from "framer-motion";
 import { useRef } from "react";
 import { Code, Palette, Zap, Award, Users, Calendar } from "lucide-react";
 import Image from "next/image";
@@ -28,7 +28,7 @@ const BioSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };

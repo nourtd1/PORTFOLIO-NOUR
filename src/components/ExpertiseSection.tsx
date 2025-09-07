@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut } from "framer-motion";
 import { useRef } from "react";
 import { Code, Palette, Zap, Database, Smartphone, Cloud } from "lucide-react";
 import { skills } from "@/lib/data";
@@ -91,7 +91,7 @@ const ExpertiseSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
