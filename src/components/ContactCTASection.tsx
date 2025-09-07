@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut, easeInOut } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Mail, Phone, Calendar, Rocket } from "lucide-react";
@@ -47,7 +47,7 @@ const ContactCTASection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -69,7 +69,7 @@ const ContactCTASection = () => {
           transition={{
             duration: 4,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         <motion.div
@@ -81,7 +81,7 @@ const ContactCTASection = () => {
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
       </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut } from "framer-motion";
 import { useRef } from "react";
 import { Users, Award, Zap, Heart, Target, Shield } from "lucide-react";
 
@@ -77,7 +77,7 @@ const ValuesSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };

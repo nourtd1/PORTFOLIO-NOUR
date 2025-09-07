@@ -10,7 +10,8 @@ import { ThemeToggle } from "./ThemeToggle";
 import { Badge } from "./ui/badge";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeOut, easeInOut } from "framer-motion";
+import { easeOut, easeInOut } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Accueil", icon: "🏠" },
@@ -64,7 +65,7 @@ export function Header() {
       )}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: easeOut }}
     >
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 opacity-50" />
@@ -90,7 +91,7 @@ export function Header() {
                 transition={{ 
                   duration: 2.5,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: easeInOut
                 }}
               />
               {/* Glow effect */}
@@ -102,7 +103,7 @@ export function Header() {
                 transition={{ 
                   duration: 3,
                   repeat: Infinity,
-                  ease: "easeInOut"
+                  ease: easeInOut
                 }}
               />
           </div>

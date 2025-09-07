@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut, easeInOut } from "framer-motion";
 import { useRef } from "react";
 import { Code, Palette, Zap, Users, Star, Calendar, TrendingUp, Award } from "lucide-react";
 import { projects, skills } from "@/lib/data";
@@ -35,7 +35,7 @@ const ProjectsHeroSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -47,7 +47,7 @@ const ProjectsHeroSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -69,7 +69,7 @@ const ProjectsHeroSection = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         <motion.div
@@ -81,7 +81,7 @@ const ProjectsHeroSection = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         
@@ -256,7 +256,7 @@ const ProjectsHeroSection = () => {
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         >
           <motion.div
@@ -267,7 +267,7 @@ const ProjectsHeroSection = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: easeInOut,
             }}
           />
         </motion.div>

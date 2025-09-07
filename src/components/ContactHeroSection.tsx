@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut, easeInOut } from "framer-motion";
 import { useRef } from "react";
 import { MessageSquare, Clock, CheckCircle, Zap, Calendar, Mail, Phone, MapPin } from "lucide-react";
 
@@ -53,7 +53,7 @@ const ContactHeroSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -65,7 +65,7 @@ const ContactHeroSection = () => {
       scale: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -87,7 +87,7 @@ const ContactHeroSection = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         <motion.div
@@ -99,7 +99,7 @@ const ContactHeroSection = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         
@@ -222,7 +222,7 @@ const ContactHeroSection = () => {
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         >
           <motion.div
@@ -233,7 +233,7 @@ const ContactHeroSection = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: easeInOut,
             }}
           />
         </motion.div>

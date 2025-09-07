@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut } from "framer-motion";
 import { useRef } from "react";
 import { HelpCircle, Clock, Globe, DollarSign, Users, Zap } from "lucide-react";
 
@@ -65,7 +65,7 @@ const FAQSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };

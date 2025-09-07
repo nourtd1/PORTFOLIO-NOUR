@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, easeOut, easeInOut } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { personalInfo, socialLinks } from "@/lib/data";
 import Link from "next/link";
@@ -32,7 +32,7 @@ const HeroSection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -43,7 +43,7 @@ const HeroSection = () => {
       transition: {
         duration: 3,
         repeat: Infinity,
-        ease: "easeInOut",
+        ease: easeInOut,
       },
     },
   };
@@ -65,7 +65,7 @@ const HeroSection = () => {
           transition={{
             duration: 20,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         <motion.div
@@ -77,7 +77,7 @@ const HeroSection = () => {
           transition={{
             duration: 25,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         
@@ -289,7 +289,7 @@ const HeroSection = () => {
               transition={{
                 duration: 4,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: easeInOut,
               }}
             />
             <motion.div
@@ -301,7 +301,7 @@ const HeroSection = () => {
               transition={{
                 duration: 3,
                 repeat: Infinity,
-                ease: "easeInOut",
+                ease: easeInOut,
               }}
             />
           </motion.div>
@@ -323,7 +323,7 @@ const HeroSection = () => {
           transition={{
             duration: 2,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         >
           <motion.div
@@ -334,7 +334,7 @@ const HeroSection = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: easeInOut,
             }}
           />
         </motion.div>
