@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, easeOut, easeInOut } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Download, Mail, Calendar, Rocket } from "lucide-react";
@@ -46,7 +46,7 @@ const AboutCTASection = () => {
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut",
+        ease: easeOut,
       },
     },
   };
@@ -68,7 +68,7 @@ const AboutCTASection = () => {
           transition={{
             duration: 4,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
         <motion.div
@@ -80,7 +80,7 @@ const AboutCTASection = () => {
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
       </div>
