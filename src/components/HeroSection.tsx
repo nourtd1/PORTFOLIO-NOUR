@@ -49,9 +49,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" aria-labelledby="hero-title" className="relative min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] pt-20 md:pt-24 flex items-center justify-center overflow-hidden">
       {/* Arrière-plan animé moderne */}
-      <div className="absolute inset-0 -z-10">
+      <div className="absolute inset-0 -z-10" aria-hidden>
         {/* Gradient principal */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" />
         
@@ -85,7 +85,7 @@ const HeroSection = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] bg-[length:20px_20px] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.1)_1px,transparent_0)]" />
       </div>
 
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-6 md:px-8 py-10 md:py-16">
         <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           variants={containerVariants}
@@ -110,7 +110,8 @@ const HeroSection = () => {
 
             {/* Titre principal avec effet de surbrillance */}
             <motion.h1
-              className="text-5xl lg:text-7xl font-bold leading-tight"
+              id="hero-title"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight"
               variants={itemVariants}
             >
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
@@ -128,7 +129,7 @@ const HeroSection = () => {
 
             {/* Sous-titre */}
             <motion.p
-              className="text-xl lg:text-2xl text-muted-foreground max-w-2xl leading-relaxed"
+              className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl leading-relaxed"
               variants={itemVariants}
             >
               {personalInfo.title} — Création d'applications web, mobiles et cloud 
@@ -163,17 +164,17 @@ const HeroSection = () => {
 
             {/* Boutons CTA */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4"
               variants={itemVariants}
             >
-              <Button asChild size="lg" className="group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0 px-8 py-3 text-lg font-semibold">
-                <Link href="/projets">
+              <Button asChild size="lg" className="group bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground border-0 px-7 md:px-8 py-3 text-base md:text-lg font-semibold">
+                <Link href="/projets" aria-label="Découvrir mes projets">
                   Découvrir mes projets
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="px-8 py-3 text-lg font-semibold">
-                <Link href="/contact">Me contacter</Link>
+              <Button asChild size="lg" variant="outline" className="px-7 md:px-8 py-3 text-base md:text-lg font-semibold">
+                <Link href="/contact" aria-label="Me contacter">Me contacter</Link>
               </Button>
             </motion.div>
 
@@ -185,17 +186,17 @@ const HeroSection = () => {
               <span className="text-sm text-muted-foreground">Suivez-moi :</span>
               <div className="flex gap-2">
                 <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10">
-                  <Link href={socialLinks.github} target="_blank" rel="noopener noreferrer">
+                  <Link href={socialLinks.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github className="h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10">
-                  <Link href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
+                  <Link href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                     <Linkedin className="h-5 w-5" />
                   </Link>
                 </Button>
                 <Button asChild variant="ghost" size="icon" className="hover:bg-primary/10">
-                  <Link href={`mailto:${socialLinks.email}`}>
+                  <Link href={`mailto:${socialLinks.email}`} aria-label="Email">
                     <Mail className="h-5 w-5" />
                   </Link>
                 </Button>
@@ -216,12 +217,14 @@ const HeroSection = () => {
             >
               {/* Image de profil */}
               <div className="relative mb-8">
-                <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-4 ring-primary/20">
+                <div className="w-28 h-28 md:w-32 md:h-32 mx-auto rounded-full overflow-hidden ring-4 ring-primary/20">
                   <Image
                     src="/images/profil.png"
                     alt="Nour - Développeur Full Stack"
                     width={128}
                     height={128}
+                    priority
+                    sizes="(min-width: 1024px) 128px, 112px"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -241,11 +244,11 @@ const HeroSection = () => {
               </p>
 
               {/* Stats dynamiques */}
-              <div className="grid grid-cols-3 gap-4 mb-6">
+              <div className="grid grid-cols-3 gap-3 md:gap-4 mb-6">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
-                    className="text-center p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
+                    className="text-center p-3 md:p-4 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1 + index * 0.2 }}
@@ -253,8 +256,8 @@ const HeroSection = () => {
                     <div className="flex justify-center mb-2">
                       <stat.icon className="h-6 w-6 text-primary" />
                     </div>
-                    <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                    <div className="text-xl md:text-2xl font-bold text-primary">{stat.value}</div>
+                    <div className="text-[11px] md:text-xs text-muted-foreground mt-1">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>

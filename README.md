@@ -81,7 +81,7 @@ Pour lancer le projet sur votre machine, suivez ces étapes :
     ```
     GEMINI_API_KEY=VOTRE_CLE_API_ICI
     ```
-
+     
 4.  **Lancez le serveur de développement :**
     ```bash
     npm run dev

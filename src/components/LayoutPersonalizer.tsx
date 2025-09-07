@@ -91,13 +91,14 @@ export function LayoutPersonalizer({ onLayoutChange }: Props) {
            <CardTitle className="font-headline text-2xl">Personnalisez votre vue</CardTitle>
         </div>
         <CardDescription>
-          Laissez notre IA vous suggérer la meilleure disposition en fonction de vos intérêts.
+          Salut ! 👋 Je suis l'IA de Nour et je suis ravie de vous aider à personnaliser votre expérience ! 
+          Laissez-moi vous suggérer la meilleure disposition en fonction de vos intérêts.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="mb-6">
           <p className="text-sm font-semibold mb-3">
-            Qu'est-ce qui vous intéresse le plus ?
+            Qu'est-ce qui vous intéresse le plus ? Je suis curieuse de connaître vos préférences ! 😊
           </p>
           <div className="flex flex-wrap gap-2">
              {interests.map(interest => (
@@ -119,7 +120,7 @@ export function LayoutPersonalizer({ onLayoutChange }: Props) {
           ) : (
             <Sparkles className="mr-2 h-4 w-4" />
           )}
-          Personnaliser
+          Personnaliser avec l'IA ✨
         </Button>
         {recommendation && (
           <Alert className="mt-4 bg-background/50">

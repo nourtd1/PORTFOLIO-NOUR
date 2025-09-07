@@ -52,7 +52,7 @@ export const projects: Project[] = [
     solution: "Structure claire, CSS modulaire, bonnes pratiques d'accessibilité et SEO.",
     results: "Version initiale prête à la mise en vente.",
     githubUrl: "https://github.com/nourtd1",
-    liveUrl: undefined,
+    liveUrl: "https://nourtd1.github.io/nour.td/",
   },
   {
     slug: "projets-academiques-aspnet",

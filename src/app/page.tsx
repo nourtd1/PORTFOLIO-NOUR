@@ -16,6 +16,7 @@ import HeroSection from "@/components/HeroSection";
 import StatsSection from "@/components/StatsSection";
 import SocialProofSection from "@/components/SocialProofSection";
 import FinalCTASection from "@/components/FinalCTASection";
+import { ContextualWelcome } from "@/components/ContextualWelcome";
 
 export const metadata: Metadata = {
   title: "Nour – Web, Mobile & Cloud | Étudiant en Software Engineering",
@@ -72,6 +73,13 @@ export default function Home() {
 
       {/* Section 1: Hero Section Moderne */}
       <HeroSection />
+
+      {/* Message d'accueil contextuel */}
+      <section className="py-8 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+        <div className="container mx-auto px-4">
+          <ContextualWelcome className="max-w-4xl mx-auto" />
+        </div>
+      </section>
 
       {/* Section 2: Statistiques avec Animations */}
       <StatsSection />

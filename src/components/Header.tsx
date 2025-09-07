@@ -69,14 +69,14 @@ export function Header() {
       {/* Animated background gradient */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5 opacity-50" />
       
-      <div className="container flex h-16 items-center justify-between px-4 relative z-10">
+      <div className="container flex h-16 md:h-20 items-center justify-between px-6 md:px-8 relative z-10">
         {/* Logo */}
         <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="relative"
         >
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group mr-4 md:mr-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-xl">
           <div className="relative">
               <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-500 shadow-xl group-hover:shadow-2xl group-hover:shadow-primary/25">
               <Code2 className="h-5 w-5 text-primary-foreground" />
@@ -134,7 +134,7 @@ export function Header() {
         </motion.div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1 relative">
+        <nav className="hidden md:flex items-center gap-2 md:gap-3 relative">
           {navLinks.map((link, index) => {
             const isActive = pathname === link.href || 
               (link.href !== '/' && pathname.startsWith(link.href));
@@ -152,7 +152,7 @@ export function Header() {
                 <Link
                 href={link.href}
                 className={cn(
-                    "relative px-4 py-2 rounded-xl transition-all duration-500 group overflow-hidden",
+                    "relative px-4 md:px-5 py-2.5 rounded-xl transition-all duration-500 group overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                   isActive 
                       ? "text-primary" 
                       : "text-muted-foreground hover:text-primary"
@@ -165,7 +165,7 @@ export function Header() {
                     >
                       {link.icon}
                     </motion.span>
-                  <span className="font-medium">{link.label}</span>
+                  <span className="font-medium text-[15px]">{link.label}</span>
                 </div>
                   
                   {/* Animated underline for active page */}
@@ -197,7 +197,7 @@ export function Header() {
                       "absolute inset-0 rounded-xl transition-all duration-500",
                       isActive 
                         ? "bg-gradient-to-r from-primary/15 to-accent/15 border border-primary/30 shadow-lg shadow-primary/10" 
-                        : "bg-transparent group-hover:bg-gradient-to-r group-hover:from-primary/10 group-hover:to-accent/10"
+                        : "bg-transparent group-hover:bg-gradient-to-r group-hover:from-primary/8 group-hover:to-accent/8"
                     )}
                     whileHover={{ 
                       scale: 1.02,
@@ -215,7 +215,7 @@ export function Header() {
             );
           })}
           
-          <div className="ml-8 flex items-center gap-4">
+          <div className="ml-6 md:ml-8 flex items-center gap-3 md:gap-4">
             {/* Availability Badge */}
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -350,7 +350,7 @@ export function Header() {
               >
                 {/* Mobile Header */}
                 <div className="flex items-center justify-between mb-8">
-                  <Link href="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link href="/" className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 rounded-xl" onClick={() => setIsMobileMenuOpen(false)}>
                     <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-xl">
                       <Code2 className="h-5 w-5 text-primary-foreground" />
                     </div>
@@ -377,7 +377,7 @@ export function Header() {
                 </div>
 
                 {/* Mobile Navigation Links */}
-                <nav className="flex flex-col gap-2 flex-1">
+                <nav className="flex flex-col gap-2.5 flex-1">
                   {navLinks.map((link, index) => {
                     const isActive = pathname === link.href || 
                       (link.href !== '/' && pathname.startsWith(link.href));
@@ -393,10 +393,10 @@ export function Header() {
                         href={link.href}
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={cn(
-                            "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group relative overflow-hidden",
+                            "flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 group relative overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                           isActive 
                               ? "text-primary bg-gradient-to-r from-primary/15 to-accent/15 border-l-4 border-primary" 
-                              : "text-muted-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10"
+                              : "text-muted-foreground hover:text-primary hover:bg-gradient-to-r hover:from-primary/8 hover:to-accent/8"
                           )}
                         >
                           <motion.span 
@@ -405,7 +405,7 @@ export function Header() {
                           >
                             {link.icon}
                           </motion.span>
-                        <span className="font-medium">{link.label}</span>
+                        <span className="font-medium text-[15px]">{link.label}</span>
                         {isActive && (
                             <motion.div 
                               className="absolute right-4 w-2 h-2 bg-primary rounded-full"
