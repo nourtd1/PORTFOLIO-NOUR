@@ -11,7 +11,6 @@ import { Badge } from "./ui/badge";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence, easeOut, easeInOut } from "framer-motion";
-import { easeOut, easeInOut } from "framer-motion";
 
 const navLinks = [
   { href: "/", label: "Accueil", icon: "🏠" },
