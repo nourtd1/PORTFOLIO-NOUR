@@ -33,6 +33,13 @@ export async function personalizeLayoutOnServer(
   availableLayouts: string
 ) {
   try {
+    if (!process.env.GOOGLE_GENAI_API_KEY) {
+      return {
+        recommendedLayout: "grid",
+        reasoning:
+          "La personnalisation IA est désactivée: clé API manquante. Ajoutez GOOGLE_GENAI_API_KEY dans Vercel (Project → Settings → Environment Variables), puis redeployez.",
+      };
+    }
     const result = await personalizeLayout({
       userBehaviorData,
       availableLayouts,
@@ -44,7 +51,7 @@ export async function personalizeLayoutOnServer(
     return {
       recommendedLayout: "grid",
       reasoning:
-        "Une erreur est survenue lors de la personnalisation. Affichage de la grille par défaut.",
+        "Une erreur est survenue lors de la personnalisation. Grille par défaut utilisée.",
     };
   }
 }
