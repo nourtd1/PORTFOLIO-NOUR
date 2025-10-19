@@ -33,11 +33,20 @@ export async function personalizeLayoutOnServer(
   availableLayouts: string
 ) {
   try {
-    if (!process.env.GOOGLE_GENAI_API_KEY) {
+    // Debug: Log des variables d'environnement
+    console.log('🔍 Debug - Variables d\'environnement:');
+    console.log('GEMINI_API_KEY:', process.env.GEMINI_API_KEY ? 'DÉFINIE' : 'NON DÉFINIE');
+    console.log('Toutes les clés env:', Object.keys(process.env).filter(key => key.includes('GEMINI')));
+    
+    // Solution temporaire: utiliser directement la clé API
+    const apiKey = process.env.GEMINI_API_KEY || 'AIzaSyBD9skP2K1ueV_3mVZKYKlvD7o-1WqY8ek';
+    console.log('🔑 API Key utilisée:', apiKey ? 'DÉFINIE' : 'NON DÉFINIE');
+    
+    if (!apiKey) {
       return {
         recommendedLayout: "grid",
         reasoning:
-          "La personnalisation IA est désactivée: clé API manquante. Ajoutez GOOGLE_GENAI_API_KEY dans Vercel (Project → Settings → Environment Variables), puis redeployez.",
+          "La personnalisation IA est désactivée: clé API manquante. Ajoutez GEMINI_API_KEY dans votre fichier .env.local.",
       };
     }
     const result = await personalizeLayout({
